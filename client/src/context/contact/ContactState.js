@@ -36,7 +36,7 @@ const ContactState = (props) => {
         type: 'professional',
       },
     ],
-    currrentContact: null,
+    currentContact: null,
   };
 
   const [state, dispatch] = useReducer(contactReducer, initialState);
