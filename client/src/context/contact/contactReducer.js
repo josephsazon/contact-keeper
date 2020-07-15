@@ -1,4 +1,4 @@
-import { CONTACT_ADD } from '../types';
+import { CONTACT_ADD, CONTACT_DELETE } from '../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -6,6 +6,13 @@ export default (state, action) => {
       return {
         ...state,
         contacts: [...state.contacts, action.payload],
+      };
+    case CONTACT_DELETE:
+      return {
+        ...state,
+        contacts: state.contacts.filter(
+          (contact) => contact.id !== action.payload
+        ),
       };
     default:
       return state;
