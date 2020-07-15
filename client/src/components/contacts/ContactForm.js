@@ -40,13 +40,12 @@ const ContactForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    contactContext.addContact(contact);
-    setContact({
-      name: '',
-      email: '',
-      phone: '',
-      type: 'personal',
-    });
+    if (currentContact === null) {
+      contactContext.addContact(contact);
+    } else {
+      contactContext.updateContact(contact);
+    }
+    clearAll();
   };
 
   return (
