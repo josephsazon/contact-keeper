@@ -4,9 +4,7 @@ import uuid from 'uuid';
 import ContactContext from './contactContext';
 import contactReducer from './contactReducer';
 
-// import {
-
-// } from '../types';
+import { CONTACT_ADD } from '../types';
 
 const ContactState = (props) => {
   const initialState = {
@@ -38,6 +36,10 @@ const ContactState = (props) => {
   const [state, dispatch] = useReducer(contactReducer, initialState);
 
   // Add Contact
+  const addContact = (contact) => {
+    // contact.id = uuid.v4();
+    dispatch({ type: CONTACT_ADD, payload: contact });
+  };
 
   // Delete Contact
 
@@ -55,6 +57,7 @@ const ContactState = (props) => {
     <ContactContext.Provider
       value={{
         contacts: state.contacts,
+        addContact,
       }}
     >
       {props.children}
