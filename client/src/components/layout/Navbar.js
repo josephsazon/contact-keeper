@@ -16,10 +16,10 @@ const Navbar = ({ icon, title }) => {
           <Link to="/about">About</Link>
         </li>
         <li>
-          <Link to="/register">Register</Link>
+          <Link to="/Login">Login</Link>
         </li>
         <li>
-          <Link to="/Login">Login</Link>
+          <Link to="/register">Register</Link>
         </li>
       </ul>
     </div>
