@@ -40,7 +40,7 @@ const ContactState = (props) => {
       },
     ],
     currentContact: null,
-    filteredContacts: [],
+    filteredContacts: null,
   };
 
   const [state, dispatch] = useReducer(contactReducer, initialState);
