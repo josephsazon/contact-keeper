@@ -7,6 +7,8 @@ import {
   FILTER_CONTACTS,
   FILTER_CLEAR,
   CONTACT_ERROR,
+  CONTACTS_GET,
+  CONTACTS_CLEAR,
 } from '../types';
 
 export default (state, action) => {
@@ -44,6 +46,21 @@ export default (state, action) => {
       return {
         ...state,
         currentContact: null,
+      };
+    case CONTACTS_CLEAR: {
+      return {
+        ...state,
+        contacts: null,
+        currentContact: null,
+        filteredContacts: null,
+        error: null,
+      };
+    }
+    case CONTACTS_GET:
+      return {
+        ...state,
+        contacts: action.payload,
+        loading: false,
       };
     case FILTER_CONTACTS:
       return {
