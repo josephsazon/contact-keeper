@@ -17,6 +17,13 @@ import Register from './components/auth/Register';
 // styles
 import './App.css';
 
+// utils
+import setAuthToken from './utils/setAuthToken';
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
 const App = () => {
   return (
     <AuthState>
