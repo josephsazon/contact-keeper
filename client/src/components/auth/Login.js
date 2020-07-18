@@ -17,7 +17,7 @@ const Login = (props) => {
 
     if (error === 'Invalid credentials') {
       alertContext.setAlert(error, 'danger');
-      alertContext.clearErrors();
+      authContext.clearErrors();
     }
     // eslint-disable-next-line
   }, [error, isAuthenticated]);
