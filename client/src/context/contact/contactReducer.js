@@ -16,13 +16,13 @@ export default (state, action) => {
     case CONTACT_ADD:
       return {
         ...state,
-        contacts: [...state.contacts, action.payload],
+        contacts: [action.payload, ...state.contacts],
       };
     case CONTACT_DELETE:
       return {
         ...state,
         contacts: state.contacts.filter(
-          (contact) => contact.id !== action.payload
+          (contact) => contact._id !== action.payload
         ),
       };
     case CONTACT_UPDATE:
