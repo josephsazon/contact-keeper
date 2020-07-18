@@ -64,6 +64,27 @@ const ContactState = (props) => {
     dispatch({ type: CONTACT_DELETE, payload: id });
   };
 
+  // Update Contact
+  const updateContact = async (contact) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      const res = await axios.put(
+        `/api/contacts/${contact._id}`,
+        contact,
+        config
+      );
+
+      dispatch({ type: CONTACT_UPDATE, payload: res.data });
+    } catch (err) {
+      dispatch({ type: CONTACT_ERROR, payload: err.response.msg });
+    }
+  };
+
   // Set Current Contact
   const setCurrentContact = (contact) => {
     dispatch({ type: CONTACT_SET, payload: contact });
@@ -72,11 +93,6 @@ const ContactState = (props) => {
   // Clear Current Contact
   const clearCurrentContact = () => {
     dispatch({ type: CONTACT_CLEAR });
-  };
-
-  // Update Contact
-  const updateContact = (contact) => {
-    dispatch({ type: CONTACT_UPDATE, payload: contact });
   };
 
   // Get Contacts
