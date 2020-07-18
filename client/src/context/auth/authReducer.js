@@ -1,8 +1,25 @@
-import { REGISTER_SUCCESS, REGISTER_FAIL, CLEAR_ERRORS } from '../types';
+import {
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
+  CLEAR_ERRORS,
+  USER_LOADED,
+  AUTH_ERROR,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  LOGOUT,
+} from '../types';
 
 export default (state, action) => {
   switch (action.type) {
+    case USER_LOADED:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        user: action.payload,
+      };
     case REGISTER_SUCCESS:
+    case LOGIN_SUCCESS:
       localStorage.setItem('token', action.payload.token);
 
       return {
@@ -11,7 +28,10 @@ export default (state, action) => {
         isAuthenticated: true,
         loading: false,
       };
+    case AUTH_ERROR:
     case REGISTER_FAIL:
+    case LOGIN_FAIL:
+    case LOGOUT:
       localStorage.removeItem('token');
 
       return {
